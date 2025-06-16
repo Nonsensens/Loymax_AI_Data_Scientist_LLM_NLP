@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  indexing:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: loymax_indexing_service
+    command: python -m indexing.indexingService
+    env_file:
+      - ./config/config.env
+    volumes:
+      - ./vector_db:/app/vector_db
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: loymax_api_service
+    command: python -m api.apiService
+    env_file:
+      - ./config/config.env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./vector_db:/app/vector_db
+    depends_on:
+      - indexing
