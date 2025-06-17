@@ -47,7 +47,7 @@ pip install -r requirements.txt
 ### 4.1 Локальный запуск
 
 ```bash
-git clone https://github.com/your-org/your-repo.git
+git clone https://github.com/Nonsensens/Loymax_AI_Data_Scientist_LLM_NLP.git
 cd your-repo
 
 pip install -r requirements.txt
